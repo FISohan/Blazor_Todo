@@ -1,0 +1,36 @@
+﻿@page "/todoList"
+@using todo.Models;
+
+<h3>TodoList</h3>
+<span> Todo Component invoke @invokeVal </span>
+<h2> Todo Count @(todos.Count) </h2>
+
+@for( int i = 0; i < todos.Count; i++)
+{
+    var todo = todos[i];
+    <TodoComponent title="@(todo.title)" index="@i" onClickDeleteBtn="deleteTodo" isDone="@(todo.isDone)"></TodoComponent>
+}
+
+<button @onclick="addTodo" > Add Todo </button>
+@code {
+    public List<TodoModel> todos = new List<TodoModel>();
+    private int invokeVal;
+    private void deleteTodo(int index)
+    {
+        invokeVal = index;
+        todos.RemoveAt(index);
+        Console.WriteLine(">>>>>>>>>>>>>");
+    }
+
+    private void updateTodo(int index)
+    {
+        
+    }
+
+    private void addTodo()
+    {
+        TodoModel todoModel = new TodoModel { title = "Todo Title", description = "loeeueh ehd" };
+        todos.Add(todoModel);
+    }
+
+}

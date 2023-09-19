@@ -1,0 +1,24 @@
+﻿<div>
+    <input type="checkbox" value="@isDone" />
+    <span> @index </span>
+    <h3> @title </h3>
+    <button @onclick="deleteBtnOnclick">Delete</button>
+</div>
+
+@code {
+    [Parameter]
+    public required int index { get; set; }
+    [Parameter]
+    public required string title { get; set; }
+    [Parameter]
+    public required bool isDone { get; set; }
+    [Parameter]
+    public required EventCallback<int> onClickDeleteBtn { get; set; }
+    [Parameter]
+    public required EventCallback onClickUpdateBtn { get; set; }
+
+    private void deleteBtnOnclick()
+    {
+        onClickDeleteBtn.InvokeAsync(index);
+    }
+}

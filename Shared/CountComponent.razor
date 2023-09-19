@@ -1,0 +1,7 @@
+﻿<h3>Current Count:</h3>
+<h4 style="font-size:@(count + "px");"> @count </h4>
+
+@code {
+    [Parameter]
+    public int count { get; set; } = 0;
+}

@@ -1,0 +1,36 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+<h1> @title </h1>
+
+@if(@currentCount >= 15){
+    <CountComponent count="@currentCount" ></CountComponent>
+}
+else
+{
+    <span>Font is too small</span>
+}
+
+<br />
+<br />
+<br />
+@for(int i = 0; i < currentCount; i++)
+{
+    <span> @i </span>
+}
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<button @onclick="DecrementCount">DecrementCount </button>
+@code {
+    private int currentCount = 0;
+    private string title = "COUNTER";
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+    private void DecrementCount()
+    {
+        currentCount--;
+    }
+}
